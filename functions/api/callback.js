@@ -141,7 +141,7 @@ function renderError(text) {
   <p style="color:#888;font-size:14px">
     请检查 Cloudflare Pages 项目的环境变量 GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET
     是否已配置，以及 GitHub OAuth App 的回调地址是否为
-    <code>https://blog.u88b.com/api/callback</code>。
+    <code>https://blog.example.com/api/callback</code>。
   </p>
 </body></html>`;
 }

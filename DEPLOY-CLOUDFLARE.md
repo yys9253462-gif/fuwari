@@ -4,13 +4,13 @@
 
 | 项 | 值 |
 | :--- | :--- |
-| **线上地址** | **https://blog.u88b.com** |
+| **线上地址** | **https://blog.example.com** |
 | Pages 项目名 | `fuwari-blog` |
 | 默认域名 | https://fuwari-blog-8mu.pages.dev |
-| 自定义域名 | `blog.u88b.com`（绑定状态 `active`） |
-| 证书 | Let's Encrypt（`CN=u88b.com`），TLS 1.3 |
-| 账号 | `yys9253462@gmail.com`（Account ID `c21081d20d9d782cf3ce39dddc17645b`） |
-| Zone | `u88b.com`（Zone ID `e728495591f765736721706f220a749a`） |
+| 自定义域名 | `blog.example.com`（绑定状态 `active`） |
+| 证书 | Let's Encrypt（`CN=example.com`），TLS 1.3 |
+| 账号 | `you@example.com`（Account ID `<ACCOUNT_ID>`） |
+| Zone | `example.com`（Zone ID `<ZONE_ID>`） |
 | 技术栈 | **Astro 7.4.0-beta.1** + Tailwind CSS 4 |
 
 **DNS 记录**（已创建，id `b57a33d1e8947e318bf888c239e671ac`）：
@@ -19,8 +19,8 @@
 | :--- | :--- | :--- | :--- |
 | CNAME | `blog` | `fuwari-blog-8mu.pages.dev` | Proxied |
 
-> 注意：`u88b.com` 这个 zone 上还跑着 **Email Routing**（3 条 MX + DKIM + SPF），
-> 增删记录时不要碰 `u88b.com` 根域和 `cf2024-1._domainkey` / `google._domainkey` 那几条。
+> 注意：`example.com` 这个 zone 上还跑着 **Email Routing**（3 条 MX + DKIM + SPF），
+> 增删记录时不要碰 `example.com` 根域和 `cf2024-1._domainkey` / `google._domainkey` 那几条。
 
 ## 技术栈版本（2026-10-05 升级）
 
@@ -60,8 +60,8 @@
 | 静态资源（12 个 `_astro/*.js\|css`） | 全部 200（无白屏风险） |
 | 不存在路径 | **404**（真状态码，非首页兜底） |
 | `http://` → `https://` | 301 跳转 |
-| RSS / sitemap / robots 内绝对链接 | 均指向 `https://blog.u88b.com/` |
-| TLS | Let's Encrypt，TLS 1.3，`CN=u88b.com` |
+| RSS / sitemap / robots 内绝对链接 | 均指向 `https://blog.example.com/` |
+| TLS | Let's Encrypt，TLS 1.3，`CN=example.com` |
 | 截图目视 | 首页、文章页、404 页布局与风格正常 |
 
 ## 部署方式

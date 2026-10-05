@@ -4,7 +4,7 @@
 
 ## 怎么用
 
-1. 打开 **https://blog.u88b.com/admin/**
+1. 打开 **https://blog.example.com/admin/**
 2. 点「Login with GitHub」→ 用 GitHub 账号授权（**只有仓库协作者能登录**）
 3. 左侧「文章」→ 新建 / 编辑 → 写完点 **Publish**
 4. Decap 会把 Markdown 直接提交到 GitHub 仓库的 `main` 分支
@@ -55,10 +55,10 @@ git-gateway / Identity 服务。Decap CMS 用 GitHub 后端时必须有人拿 `c
 | 字段 | 值 |
 | :--- | :--- |
 | Application name | `Teyir Blog CMS`（随意） |
-| Homepage URL | `https://blog.u88b.com` |
-| Authorization callback URL | `https://blog.u88b.com/api/callback` |
+| Homepage URL | `https://blog.example.com` |
+| Authorization callback URL | `https://blog.example.com/api/callback` |
 
-> ⚠️ 回调地址**必须精确**为 `https://blog.u88b.com/api/callback`，一个字符都不能差。
+> ⚠️ 回调地址**必须精确**为 `https://blog.example.com/api/callback`，一个字符都不能差。
 
 创建后记下 **Client ID**，再点 **Generate a new client secret** 生成 **Client Secret**
 （secret 只显示一次，先复制下来）。
@@ -83,7 +83,7 @@ npx wrangler pages deploy dist --project-name=fuwari-blog --branch=main
 
 ### 验证
 
-配好后打开 https://blog.u88b.com/admin/ 点登录，能正常跳到 GitHub 授权页就说明通了。
+配好后打开 https://blog.example.com/admin/ 点登录，能正常跳到 GitHub 授权页就说明通了。
 若报错，页面会直接显示是哪个环节出问题（缺环境变量 / 回调地址不对 / secret 无效）。
 
 ## 安全说明

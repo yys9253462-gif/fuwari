@@ -8,7 +8,7 @@ backend:
   branch: main
   # OAuth 中转由本站的 Cloudflare Pages Function 提供
   # （Cloudflare Pages 无 Netlify 的 git-gateway，必须自建）
-  base_url: https://blog.u88b.com
+  base_url: https://blog.example.com
   auth_endpoint: api/auth
 
 # 图片上传到 public/images/uploads/，站点引用路径为 /images/uploads/

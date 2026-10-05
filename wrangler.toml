@@ -1,0 +1,7 @@
+# Cloudflare Pages 配置
+# 说明：fuwari 是纯静态站点（Astro static output），无需 SSR，
+#       因此不需要 @astrojs/cloudflare 适配器，直接部署 dist/ 即可。
+
+name = "fuwari-blog"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-05"

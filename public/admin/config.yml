@@ -1,0 +1,114 @@
+# Decap CMS 配置
+# 字段定义必须与 src/content.config.ts 的 zod schema 保持一致，否则构建时校验失败。
+# 官方文档：https://decapcms.org/docs/configuration-options/
+
+backend:
+  name: github
+  repo: yys9253462-gif/fuwari
+  branch: main
+  # OAuth 中转由本站的 Cloudflare Pages Function 提供
+  # （Cloudflare Pages 无 Netlify 的 git-gateway，必须自建）
+  base_url: https://blog.u88b.com
+  auth_endpoint: api/auth
+
+# 图片上传到 public/images/uploads/，站点引用路径为 /images/uploads/
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# 站点语言（影响 CMS 界面语言）
+locale: zh_Hans
+
+# 发布流程：直接提交到 main，Cloudflare Pages 会自动构建发布
+publish_mode: simple
+
+# 编辑器预览样式（可选，用站点自己的字体观感更一致）
+# editor:
+#   preview: false
+
+collections:
+  - name: posts
+    label: 文章
+    label_singular: 文章
+    folder: src/content/posts
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    # 文章列表里显示的摘要信息
+    summary: "{{title}}  ·  {{published | date('YYYY-MM-DD')}}"
+    sortable_fields: [published, title]
+    fields:
+      - label: 标题
+        name: title
+        widget: string
+
+      - label: 发布日期
+        name: published
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: 最后更新
+        name: updated
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+        required: false
+
+      - label: 描述
+        name: description
+        widget: text
+        required: false
+        hint: 显示在文章列表页的摘要，留空则不显示
+
+      - label: 分类
+        name: category
+        widget: string
+        required: false
+
+      - label: 标签
+        name: tags
+        widget: list
+        required: false
+        default: []
+        hint: 每行一个标签
+
+      - label: 封面图
+        name: image
+        widget: image
+        required: false
+        hint: 建议 16:9，上传后自动存入 public/images/uploads/
+
+      - label: 草稿
+        name: draft
+        widget: boolean
+        default: false
+        hint: 勾选后不会出现在生产站点（仅本地开发可见）
+
+      - label: 语言
+        name: lang
+        widget: string
+        required: false
+        hint: 留空则用站点默认语言（zh_CN）
+
+      - label: 正文
+        name: body
+        widget: markdown
+
+  - name: spec
+    label: 页面
+    label_singular: 页面
+    folder: src/content/spec
+    create: false
+    delete: false
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - label: 正文
+        name: body
+        widget: markdown
+        hint: 关于页等内容，frontmatter 为空对象

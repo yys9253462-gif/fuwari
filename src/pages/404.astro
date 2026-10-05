@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+
+// Astro 静态构建时，src/pages/404.astro 会输出 dist/404.html，
+// Cloudflare Pages 对未匹配路径会自动用它作为 404 响应体，
+// 并返回真正的 404 状态码（否则不存在的路径会全部落到首页并返回 200）。
+const title = "页面不存在";
+const description = "你要找的页面不存在或已被移除。";
+---
+
+<MainGridLayout title={title} description={description}>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-12 relative w-full flex flex-col items-center justify-center text-center">
+            <div class="text-[6rem] md:text-[8rem] font-bold leading-none opacity-20 select-none">
+                404
+            </div>
+
+            <div class="flex items-center gap-2 mt-2">
+                <Icon name="fa6-solid:compass" class="text-[var(--primary)]"></Icon>
+                <h1 class="text-2xl md:text-3xl font-bold">{title}</h1>
+            </div>
+
+            <p class="mt-4 opacity-75 max-w-md">
+                {description}
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 mt-8">
+                <a href="/" class="btn-regular rounded-lg h-10 px-5 flex items-center gap-2">
+                    <Icon name="fa6-solid:house" class="text-[0.9rem]"></Icon>
+                    返回首页
+                </a>
+                <a href="/archive/" class="btn-plain rounded-lg h-10 px-5 flex items-center gap-2">
+                    <Icon name="fa6-solid:box-archive" class="text-[0.9rem]"></Icon>
+                    浏览归档
+                </a>
+            </div>
+
+            <p class="mt-8 text-sm opacity-50">
+                或者在右上角搜索框里找找看
+            </p>
+        </div>
+    </div>
+</MainGridLayout>

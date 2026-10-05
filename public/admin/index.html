@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>内容管理 · Teyir's Blog</title>
+    <link rel="icon" href="/favicon/favicon-light-32.png" />
+    <style>
+      /* 后台加载前的占位，避免白屏 */
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+        background: #f6f8fb;
+        color: #333;
+      }
+      #loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-size: 14px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">正在加载内容管理界面…</div>
+
+    <!--
+      Decap CMS（原 Netlify CMS）
+      版本锁定 3.16.3，与 package.json 里声明的版本保持一致。
+      升级时同步改这里的版本号与 package.json。
+
+      登录走本站自己的 Cloudflare Pages Function（/api/auth → /api/callback），
+      不需要 Netlify Identity 或 git-gateway。
+    -->
+    <script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
+
+    <script>
+      // CMS 初始化后移除占位
+      window.addEventListener("load", () => {
+        const el = document.getElementById("loading");
+        if (el) el.remove();
+      });
+    </script>
+  </body>
+</html>
